@@ -49,7 +49,7 @@ it('Deve fazer login com sucesso - Usando massa de dados', () => {
 
 })
 
-it.only('Deve fazer login com sucesso - Usando Fixture', () => {
+it('Deve fazer login com sucesso - Usando Fixture', () => {
       cy.fixture('perfil').then( dados => {
          cy.get('#username').type(dados.usuario , {log: false})
          cy.get('#password').type(dados.senha , {log: false})
@@ -58,5 +58,12 @@ it.only('Deve fazer login com sucesso - Usando Fixture', () => {
       
       })
 })
+
+it.only('Deve fazer login com sucesso - usando Comandos customizados', () => {
+   cy.login('thairys.teste@teste.com','teste@123' )
+   cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, thairys.teste (não é thairys.teste? Sair)')
+});
+
+
 
 }) 
